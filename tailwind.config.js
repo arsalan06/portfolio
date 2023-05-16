@@ -12,6 +12,18 @@ module.exports = {
         'gradient-conic':
           'conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))',
       },
+      colors: {
+        custombgcolor: '#ECF0F3',
+        sociallinkcolor:"#E5EBEE",
+        linkcolor:'#0D1013' // Custom color hex value
+      },
+      fontFamily: {
+        'sans': ['Montserrate', 'sans serif'],
+      },
+      fontSize: {
+        sm: '0.8rem',
+        base: '16px',
+      } 
       // dropShadow: {
       //   '3xl': '0 35px 35px rgba(0, 0, 0, 0.25)',
       //   '4xl': [

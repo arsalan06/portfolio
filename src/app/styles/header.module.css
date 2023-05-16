@@ -33,3 +33,12 @@
    }
    
  }
+ .box_shadow{
+  box-shadow: -3px -4px 12px 4px rgba(255,255,255,0.75);
+  -webkit-box-shadow: -3px -4px 12px 4px rgba(255,255,255,0.75);
+  -moz-box-shadow: -3px -4px 12px 4px rgba(255,255,255,0.75);
+  background: #ecf0f3;
+  background: linear-gradient(130deg,#ecf0f3 0%, #f6f6f6 100%);
+  /* background: -webkit-linear-gradient(128deg,#ecf0f3 0%, #f6f6f6 80%);
+  background: -moz-linear-gradient(128deg,#ecf0f3 0%, #f6f6f6 80%); */
+}

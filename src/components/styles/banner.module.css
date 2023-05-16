@@ -1,5 +1,69 @@
-.box_shadow{
-  box-shadow: -5px 4px 19px 3px rgba(0,0,0,0.75) inset;
-  -webkit-box-shadow: -5px 4px 19px 3px rgba(0,0,0,0.75) inset;
-  -moz-box-shadow: -5px 4px 19px 3px rgba(0,0,0,0.75) inset;
+.twitter_social_box_shadow{
+  border: 1px solid lightgray;
+  box-shadow: -3px -4px 12px 4px rgba(255,255,255,0.75);
+  -webkit-box-shadow: -3px -4px 12px 4px rgba(255,255,255,0.75);
+  -moz-box-shadow: -3px -4px 12px 4px rgba(255,255,255,0.75);
+  /* background-color: #ecf0f3;
+  background-image: linear-gradient(128deg,#ecf0f3 0%, #f6f6f6 85%);
+  background-image: -webkit-linear-gradient(128deg,#ecf0f3 0%, #f6f6f6 85%);
+  background-image: -moz-linear-gradient(128deg,#ecf0f3 0%, #f6f6f6 85%); */
+  background-size: 0% 100%;
+  transition: background-color .5s ease-in-out;
+}
+.twitter_social_box_shadow:hover {
+  background-color:white;
+  background-image: linear-gradient(139deg,#ECF0F3 10%, #7BE0A2 40%, #F6F6F6 100%);
+  background-repeat:no-repeat;
+  background-size: 100% 100%;
+  transition:background-size 0.5s, background-color 0.5s ;
+}
+.linkedin_social_box_shadow{
+  border: 1px solid lightgray;
+  box-shadow: -3px -4px 12px 4px rgba(255,255,255,0.75);
+  -webkit-box-shadow: -3px -4px 12px 4px rgba(255,255,255,0.75);
+  -moz-box-shadow: -3px -4px 12px 4px rgba(255,255,255,0.75);
+  background: #ecf0f3;
+  background: linear-gradient(128deg,#ecf0f3 0%, #f6f6f6 85%);
+}
+.linkedin_social_box_shadow:hover{
+  background: #ecf0f3;
+  background: linear-gradient(149deg,#ecf0f3 10%, #0077b5 40%, #f6f6f6 90%);
+  background: -webkit-linear-gradient(149deg,#ecf0f3 10%, #0077b5 40%, #f6f6f6 90%);
+  background: -moz-linear-gradient(149deg,#ecf0f3 10%, #0077b5 40%, #f6f6f6 90%);
+}
+.git_social_box_shadow{
+  border: 1px solid lightgray;
+  box-shadow: -3px -4px 12px 4px rgba(255,255,255,0.75);
+  -webkit-box-shadow: -3px -4px 12px 4px rgba(255,255,255,0.75);
+  -moz-box-shadow: -3px -4px 12px 4px rgba(255,255,255,0.75);
+  background: #ecf0f3;
+  background: linear-gradient(128deg,#ecf0f3 0%, #f6f6f6 85%);
+}
+.git_social_box_shadow:hover{
+  background: #ecf0f3;
+  background: linear-gradient(149deg,#ecf0f3 10%, #363a3c 40%, #f6f6f6 90%);
+  background: -webkit-linear-gradient(149deg,#ecf0f3 10%, #363a3c 40%, #f6f6f6 90%);
+  background: -moz-linear-gradient(149deg,#ecf0f3 10%, #363a3c 40%, #f6f6f6 90%);
+}
+.whatsapp_social_box_shadow{
+  border: 1px solid lightgray;
+  box-shadow: -3px -4px 12px 4px rgba(255,255,255,0.75);
+  -webkit-box-shadow: -3px -4px 12px 4px rgba(255,255,255,0.75);
+  -moz-box-shadow: -3px -4px 12px 4px rgba(255,255,255,0.75);
+  background: #ecf0f3;
+  background: linear-gradient(128deg,#ecf0f3 0%, #f6f6f6 85%);
+}
+.whatsapp_social_box_shadow:hover{
+  background: #ecf0f3;
+  background: linear-gradient(139deg,#ecf0f3 10%, #7be0a2 40%, #f6f6f6 100%);
+  background: -webkit-linear-gradient(139deg,#ecf0f3 10%, #7be0a2 40%, #f6f6f6 100%);
+  background: -moz-linear-gradient(139deg,#ecf0f3 10%, #7be0a2 40%, #f6f6f6 100%);
+}
+.profile_box_shadow{
+  box-shadow: -3px -4px 12px 4px rgba(255,255,255,0.75);
+  -webkit-box-shadow: -3px -4px 12px 4px rgba(255,255,255,0.75);
+  -moz-box-shadow: -3px -4px 12px 4px rgba(255,255,255,0.75);
+  background: #ecf0f3;
+  background: linear-gradient(128deg,#ecf0f3 0%, #f6f6f6 85%);
+  /* padding-top: -50; */
 }
