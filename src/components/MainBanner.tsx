@@ -1,23 +1,44 @@
 "use client"
-import React from "react";
+import React, { useEffect } from "react";
 import Image from "next/image";
 import { Typewriter } from 'react-simple-typewriter';
-import { AiFillGithub, AiFillLinkedin, AiOutlineTwitter } from "react-icons/ai";
 import { FaWhatsapp } from "react-icons/fa";
 import { TfiTwitter } from "react-icons/tfi";
 import { SlSocialLinkedin } from "react-icons/sl";
 import { FiGithub } from "react-icons/fi";
 import styles from"./styles/banner.module.css"
-function MainBanner() {
+import axios from "axios";
+export const dynamic="no-cache"
+const fetchTodos = async () => {
+  const res = await fetch("http://0.0.0.0:3000/api/user",{
+    // method:"GET"
+  });
+  const todos = await res.json();
+  return todos;
+};
+interface data {
+  name: string,
+  skill:[],
+  about:string
+
+}
+async function MainBanner() {
+  // const todos = await fetchTodos();
+  // console.log("user info")
+  // console.log("user info")
+ const {data}= await axios.get("http://localhost:3000/api/user")
+
+  console.log(data)
   return (
     <>
     <div className="min-h-screen bg-custombgcolor w-full  flex justify-around lg:flex-row md:flex-row sm:flex-col">
       <div className="w-1/2 pl-4 pr-4 flex-shrink mt-28">
         <p className=" uppercase text-md font-sans text-linkcolor">WELCOME TO MY WORLD</p>
         <p className="font-bold text-6xl leading-snug mt-4">
-          Hi, I’m <span className="text-red-600"> Jone Lee  <br></br>a </span>
+          Hi, I’m <span className="text-red-600 capitalize"> {data.data[0].name} <br></br><span className="lowercase ">a</span> </span>
           <Typewriter
-            words={['Reactjs Developer', 'Nextjs Developer', 'Professional Coder']}
+            // words={["Reactjs Developer", "Nextjs Developer", "Professional Coder"]}
+            words={data.data[0].skill}
             loop={true}
             typeSpeed={70}
           />
@@ -45,20 +66,6 @@ function MainBanner() {
           <TfiTwitter className="text-2xl cursor-pointer" />
           </span>
         </div>
-        {/* <div className="flex w-1/2 justify-around">
-          <span className={`drop-shadow-5xl pl-2 pr-2 pt-2 pb-2 rounded-lg bg-slate-300 ${styles.social_box_shadow} `}>
-        <FaWhatsapp className="text-2xl cursor-pointer" />
-          </span>
-          <span className={`drop-shadow-5xl pl-2 pr-2 pt-2 pb-2 rounded-lg bg-slate-300 ${styles.social_box_shadow} `}>
-          <AiFillGithub className="text-2xl cursor-pointer" />
-          </span>
-          <span className={`drop-shadow-5xl pl-2 pr-2 pt-2 pb-2 rounded-lg bg-slate-300 ${styles.social_box_shadow} `}>
-          <AiFillLinkedin className="text-2xl cursor-pointer " />
-          </span>
-          <span className={`drop-shadow-5xl pl-2 pr-2 pt-2 pb-2 rounded-lg bg-slate-300 ${styles.social_box_shadow} `}>
-          <AiOutlineTwitter className="text-2xl cursor-pointer " />
-          </span>
-        </div> */}
         </div>
       </div>
       <div className="w-1/4 mt-40">

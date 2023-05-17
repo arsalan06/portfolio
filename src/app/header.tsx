@@ -28,7 +28,7 @@ export default function Header() {
       // }}
     >
       <div
-        className={`italic hover:not-italic hover:text-slate-600 font-bold text-2xl text-white  ${styles.patterns}`}
+        className={`italic hover:text-slate-600 font-bold text-2xl text-white  ${styles.patterns}`}
       >
         <svg width="100%" height="90%" className={styles.svg}>
           <defs>
@@ -68,8 +68,11 @@ export default function Header() {
         <Link href={"/"} className="mr-5 font-sans text-linkcolor text-base">
           PRICE
         </Link>
-        <button  className={`mr-5 font-sans text-linkcolor text-lg bottom-auto  pl-4 pr-4 pt-3 pb-3 rounded-xl border-gray-500 ${styles.box_shadow}`}>
+        <button  className={`mr-5 font-sans text-linkcolor text-lg bottom-auto  pl-4 pr-4 pt-2 pb-2 rounded-xl border-x-2 border-y-2  border-gray-200 ${styles.box_shadow}`}>
           Contact us
+        </button>
+        <button  className={`mr-5 font-sans text-lg bottom-auto  pl-4 pr-4 pt-2 pb-2 rounded-xl border-x-2 border-y-2  border-gray-200 text-red-600 ${styles.box_shadow}`}>
+          Hire me
         </button>
       </div>
     </nav>
