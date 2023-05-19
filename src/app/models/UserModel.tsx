@@ -36,15 +36,18 @@ UserSchema.pre('save', async function (next) {
     if (this.password !== this.confirmPassword) {
       throw new Error('Password and Confirm Password do not match');
     }
-    console.log("in password checker")
-    console.log(this.password)
-    console.log(this.confirmPassword)
     const hashedPassword = await bcrypt.hash(this.password, 10);
     this.password = hashedPassword;
   // }
 
   next();
 });
+// UserSchema.methods.correctPassword = async function (
+//   candidatePassword,
+//   userPassword
+// ) {
+//   return await bcrypt.compare(candidatePassword, userPassword);
+// };
 const UserModel = models.User || model("User", UserSchema);
 
 export default UserModel;
