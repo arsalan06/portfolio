@@ -12,7 +12,7 @@ export async function GET(req: NextApiRequest) {
        const user = await UserModel.find();
 
         return NextResponse.json({
-            message:"Message sent successfully!",
+            message:"signup  successfully!",
             data:user
         }, {
             status: 200
@@ -31,8 +31,8 @@ export async function POST(request: Request) {
         const body = await request.json();
         await connect();
         
-        await UserModel.create(body);
         console.log(body);
+        await UserModel.create(body);
 
         return NextResponse.json({
             message:"Message sent successfully!"
@@ -40,9 +40,10 @@ export async function POST(request: Request) {
             status: 200
         })
 
-    }catch (e) {
+    }catch (error) {
+        console.log(error)
         return NextResponse.json(
-            { message: "Server error, please try again!" },
+            { message: "Server error, please try again!", error},
             { status: 500 }
         )
     }
