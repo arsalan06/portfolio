@@ -28,10 +28,10 @@ export async function GET(req: NextApiRequest) {
 export async function POST(request: Request) {
     try {
         console.log("i am in get request");
+        // console.log(request);
         const body = await request.json();
         await connect();
         
-        console.log(body);
         await UserModel.create(body);
 
         return NextResponse.json({

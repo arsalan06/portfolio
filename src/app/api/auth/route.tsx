@@ -13,11 +13,9 @@ const signToken = (id: string) => {
   });
 };
 export async function POST(request: Request) {
-  console.log("i am in get request");
   const body = await request.json();
   await connect();
 
-  await UserModel.create(body);
   const { email, password } = body;
   console.log(body);
   try {
@@ -26,19 +24,22 @@ export async function POST(request: Request) {
     } else if (email && password) {
       const user = await UserModel.findOne({ email }).select("+password");
       // console.log(user);
-    //   const correct = await user.correctPassword(password, user.password);
-    //   console.log(correct);
-    //   if (user == null || user == undefined || !correct) {
-    //     console.log("please provide valid email or password");
-    //   } else {
+      const correct = await user.correctPassword(password, user.password);
+      if (user == null || user == undefined || !correct) {
+        console.log("please provide valid email or password");
+      } else {
         const token = signToken(user._id);
+        delete user.password;
         return NextResponse.json({
-          message: "Message sent successfully!",
+          message: "Login successfully!",
+          token: token,
+          user,
         });
-    //   }
+      }
     }
     // res.status(200).json(products);
   } catch (e) {
+    console.log(e);
     return NextResponse.json(
       { message: "Server error, please try again!" },
       { status: 500 }

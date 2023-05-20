@@ -17,6 +17,11 @@ const UserSchema: Schema = new Schema({
     type: String,
     required: [true, "please provide a password"],
     minlength: 8,
+  },
+  confirmPassword: {
+    type: String,
+    required: [true, "please provide a password"],
+    minlength: 8,
     select: false,
   },
   skill: {
@@ -32,22 +37,25 @@ const UserSchema: Schema = new Schema({
 });
 UserSchema.pre('save', async function (next) {
   // if (this.isModified('password') || this.isNew) {
-
+     console.log("in password check fun")
+     console.log(this.password)
+     console.log(this.confirmPassword)
     if (this.password !== this.confirmPassword) {
       throw new Error('Password and Confirm Password do not match');
     }
     const hashedPassword = await bcrypt.hash(this.password, 10);
     this.password = hashedPassword;
   // }
+  this.confirmPassword = undefined;
 
   next();
 });
-// UserSchema.methods.correctPassword = async function (
-//   candidatePassword,
-//   userPassword
-// ) {
-//   return await bcrypt.compare(candidatePassword, userPassword);
-// };
+UserSchema.methods.correctPassword = async function (
+  candidatePassword:string,
+  userPassword:string
+) {
+  return await bcrypt.compare(candidatePassword, userPassword);
+};
 const UserModel = models.User || model("User", UserSchema);
 
 export default UserModel;
