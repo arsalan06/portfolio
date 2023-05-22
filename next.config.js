@@ -1,9 +1,9 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  experimental: {
-    appDir: true,
-    serverComponentsExternalPackages: ['mongoose', 'bcrypt'],
-  },
-};
+    experimental: {
+        appDir: true,
+        serverComponentsExternalPackages: ["mongoose"],
+      },
+}
 
-module.exports = nextConfig;
+module.exports = nextConfig
