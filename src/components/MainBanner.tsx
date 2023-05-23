@@ -26,19 +26,18 @@ async function MainBanner() {
   // const todos = await fetchTodos();
   // console.log("user info")
   // console.log("user info")
- const {data}= await axios.get("http://localhost:3000/api/user")
+//  const {data}= await axios.get("http://localhost:3000/api/user")
 
-  console.log(data)
   return (
     <>
-    <div className="min-h-screen bg-custombgcolor w-full  flex justify-around lg:flex-row md:flex-row sm:flex-col">
+    <div className="min-h-screen bg-custombgcolor w-full  flex justify-between lg:flex-row md:flex-row sm:flex-col border-b-2 border-gray-300">
       <div className="w-1/2 pl-4 pr-4 flex-shrink mt-28">
         <p className=" uppercase text-md font-sans text-linkcolor">WELCOME TO MY WORLD</p>
         <p className="font-bold text-6xl leading-snug mt-4">
-          Hi, I’m <span className="text-red-600 capitalize"> {data.data[0].name} <br></br><span className="lowercase ">a</span> </span>
+          Hi, I’m <span className="text-red-600 capitalize font-sans"> Arsalan <br></br><span className="lowercase ">a</span> </span>
           <Typewriter
-            // words={["Reactjs Developer", "Nextjs Developer", "Professional Coder"]}
-            words={data.data[0].skill}
+            words={["Reactjs Developer", "Nextjs Developer", "Professional Coder"]}
+            // words={data.data[0].skill}
             loop={true}
             typeSpeed={70}
           />
@@ -68,12 +67,12 @@ async function MainBanner() {
         </div>
         </div>
       </div>
-      <div className="w-1/4 mt-40">
-        <div className={`drop-shadow-5xl pl-4 pr-4 pt-0 pb-4 rounded-lg cursor-pointer bg-sociallinkcolor mr-5 ransition ease-in-out delay-150 hover:-translate-y-1 relative h-80 ${styles.profile_box_shadow} `}>
+      <div className="w-1/3 mt-40">
+        <div className={`drop-shadow-5xl pl-4 pr-4 w-80 pt-0 pb-4 rounded-lg cursor-pointer bg-sociallinkcolor mr-5 ransition ease-in-out delay-150 hover:-translate-y-1 relative h-80 ${styles.profile_box_shadow} `}>
         <Image
           src="/profile.png"
           width={300}
-          height={500}
+          height={700}
           alt="Picture of the author"
          className="absolute bottom-0 z-10"
         />

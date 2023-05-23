@@ -4,6 +4,7 @@ import { AiFillGithub, AiFillLinkedin, AiOutlineTwitter } from "react-icons/ai";
 import { FaWhatsapp } from "react-icons/fa";
 import styles from "./styles/header.module.css";
 import Link from "next/link";
+import { signOut } from "next-auth/react";
 export default function Header() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [scrolling, setScrolling] = useState("");
@@ -20,7 +21,9 @@ export default function Header() {
   return (
     // <header className="bg-transparent">
     <nav
-      className={`flex w-full items-center justify-between p-6 lg:px-8 z-50 sticky bg-custombgcolor top-0 h-24 ${scrolling ? "": "border-b border-gray-400 "} ${scrolling}`}
+      className={`flex w-full items-center justify-between p-6 lg:px-8 z-50 sticky bg-custombgcolor top-0 h-24 ${
+        scrolling ? "" : "border-b border-gray-400 "
+      } ${scrolling}`}
       aria-label="Global"
       id="nav"
       // style={{
@@ -68,11 +71,21 @@ export default function Header() {
         <Link href={"/"} className="mr-5 font-sans text-linkcolor text-base">
           PRICE
         </Link>
-        <button  className={`mr-5 font-sans text-linkcolor text-lg bottom-auto  pl-4 pr-4 pt-2 pb-2 rounded-xl border-x-2 border-y-2  border-gray-200 ${styles.box_shadow}`}>
+        <button
+          className={`mr-5 font-sans text-linkcolor text-lg bottom-auto  pl-4 pr-4 pt-2 pb-2 rounded-xl border-x-2 border-y-2  border-gray-200 ${styles.box_shadow}`}
+        >
           Contact us
         </button>
-        <button  className={`mr-5 font-sans text-lg bottom-auto  pl-4 pr-4 pt-2 pb-2 rounded-xl border-x-2 border-y-2  border-gray-200 text-red-600 ${styles.box_shadow}`}>
+        <button
+          className={`mr-5 font-sans text-lg bottom-auto  pl-4 pr-4 pt-2 pb-2 rounded-xl border-x-2 border-y-2  border-gray-200 text-red-600 ${styles.box_shadow}`}
+        >
           Hire me
+        </button>
+        <button
+          className={`mr-5 font-sans text-lg bottom-auto  pl-4 pr-4 pt-2 pb-2 rounded-xl border-x-2 border-y-2  border-gray-200 text-red-600 ${styles.box_shadow}`}
+          onClick={() => signOut()}
+        >
+          Logout
         </button>
       </div>
     </nav>

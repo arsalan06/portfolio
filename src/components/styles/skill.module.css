@@ -1,0 +1,35 @@
+.skill_card_box_shadow {
+  box-shadow: 0px 0px 5px 8px rgba(255, 255, 255, 0.4);
+  -webkit-box-shadow: 0px 0px 5px 8px rgba(255, 255, 255, 0.4);
+  -moz-box-shadow: 0px 0px 5px 8px rgba(255, 255, 255, 0.4);
+  background: #ecf0f3;
+  background: linear-gradient(128deg, #ecf0f3 50%, #ffffff 120%);
+  background: -webkit-linear-gradient(128deg, #ecf0f3 50%, #ffffff 120%);
+  background: -moz-linear-gradient(128deg, #ecf0f3 50%, #ffffff 120%);
+  padding: 30px 30px;
+  width: 30%;
+}
+.demo {
+  display: none;
+  font-size: 28px;
+}
+.skill_card_box_shadow:hover {
+  background: #5ed3f3;
+  background: linear-gradient(180deg, #5ed3f3 50%, #ffffff 100%);
+  background: -webkit-linear-gradient(180deg, #5ed3f3 50%, #ffffff 100%);
+  background: -moz-linear-gradient(180deg, #5ed3f3 50%, #ffffff 100%);
+}
+.skill_card_box_shadow:hover .demo {
+    display: block;
+}
+/* .skill_card_box_shadow .demo:nth-child(1):hover {
+  background-color: blue;
+  display: none;
+} */
+.skill_card_logo_con {
+  background-color: #ffffff;
+  padding: 6px 6px;
+  border-radius: 50%;
+  font-size: 75px;
+  color: black;
+}
