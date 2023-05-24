@@ -3,11 +3,23 @@ import UserModel from "@/app/models/UserModel";
 import { connect } from "@/util/mongoos";
 import { NextResponse } from "next/server";
 const jwt = require("jsonwebtoken");
-import NextAuth from 'next-auth';
-import { getToken } from "next-auth/jwt"
+import NextAuth,{ AuthOptions, DefaultSession, Session } from "next-auth";
+import { getToken } from "next-auth/jwt";
 
-const secret = process.env.NEXTAUTH_SECRET
-import CredentialsProvider from 'next-auth/providers/credentials';
+interface PageArray {
+  user: {
+   _id:string,
+   name:string,
+   email:string,
+   password:string,
+   skill:[],
+   about:string
+  } 
+}
+
+const secret = process.env.NEXTAUTH_SECRET;
+import CredentialsProvider from "next-auth/providers/credentials";
+// import { CustomSession, CustomUser } from "../../../../../types/next-auth";
 const signToken = (id: string) => {
   // console.log("signToken");
   // console.log("signToken");
@@ -59,22 +71,23 @@ const signToken = (id: string) => {
 
 //   // new Response("skjcdsc")
 // }
-export const authOptions = {
+export const authOptions: AuthOptions  = {
   // Configure one or more authentication providers
-  secret:process.env.NEXTAUTH_SECRET,
+  
+  secret: process.env.NEXTAUTH_SECRET,
   providers: [
     CredentialsProvider({
       // The name to display on the sign in form (e.g. 'Sign in with...')
-      name: 'Credentials',
+      name: "Credentials",
       // The credentials is used to generate a suitable form on the sign in page.
       // You can specify whatever fields you are expecting to be submitted.
       // e.g. domain, username, password, 2FA token, etc.
       // You can pass any HTML attribute to the <input> tag through the object.
       credentials: {
-        email: { label: 'Email', type: 'email', placeholder: 'abc@gmail.com' },
-        password: { label: 'Password', type: 'password' },
+        email: { label: "Email", type: "email", placeholder: "abc@gmail.com" },
+        password: { label: "Password", type: "password" },
       },
-      async authorize(credentials, req) {
+      async authorize (credentials, req) {
         // You need to provide your own logic here that takes the credentials
         // submitted and returns either a object representing a user or value
         // that is false/null if the credentials are invalid.
@@ -82,46 +95,59 @@ export const authOptions = {
         // You can also use the `req` object to obtain additional parameters
         // (i.e., the request IP address)
         // const token = await getToken({ req, secret })
-        console.log('connecting mongodb');
         await connect();
 
         // const {  email, password } = credentials;
 
         try {
-          console.log("bdhbcw")
-          console.log(credentials)
-          console.log(credentials?.password)
+          console.log("bdhbcw");
+          console.log(credentials);
+          console.log(credentials?.password);
 
           if (!credentials?.email || !credentials?.password) {
-            console.log('please provide email or password');
+            console.log("please provide email or password");
             return null;
           }
 
           const user = await UserModel.findOne({ email: credentials.email })
-            .select('+password')
+            .select("+password")
             .exec();
 
           if (!user) {
             return null;
           }
 
-          const correct = await user.correctPassword(credentials?.password, user.password);
+          const correct = await user.correctPassword(
+            credentials?.password,
+            user.password
+          );
           if (!correct) {
             return null;
           }
           const token = signToken(user._id);
-          delete user.password;
-          user.token=token
-          // let data={user, token}
           return user;
+
         } catch (e) {
           console.log(e);
-          return null;
+          return Promise.reject(e);
         }
       },
     }),
+  
   ],
+  callbacks: {
+		async jwt({ token, user }) {
+			return { ...token, ...user };
+		},
+		async session({ session, token, }: { session: Session; token: any, }) {
+			return { ...session, user: token._doc };
+		},
+	},
+	session: {
+		strategy: "jwt",
+	},
+
 };
 const handler = NextAuth(authOptions);
 
-export { handler as GET, handler as POST }
+export { handler as GET, handler as POST };

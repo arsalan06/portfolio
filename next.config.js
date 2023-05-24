@@ -4,6 +4,7 @@ const nextConfig = {
         appDir: true,
         serverComponentsExternalPackages: ["mongoose"],
       },
+      // "include": ["next-env.d.ts", "types/**/*.ts", "**/*.ts", "**/*.tsx"],
 }
 
 module.exports = nextConfig
