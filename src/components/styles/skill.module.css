@@ -10,8 +10,11 @@
   width: 30%;
 }
 .demo {
-  display: none;
+  /* display: none; */
+  opacity:0;
   font-size: 28px;
+  transition: all 1s ease;
+  /* transition: opacity 2s; */
 }
 .skill_card_box_shadow:hover {
   background: #5ed3f3;
@@ -20,7 +23,9 @@
   background: -moz-linear-gradient(180deg, #5ed3f3 50%, #ffffff 100%);
 }
 .skill_card_box_shadow:hover .demo {
-    display: block;
+    /* display: block; */
+    margin-top: 20px;
+    opacity:1;
 }
 /* .skill_card_box_shadow .demo:nth-child(1):hover {
   background-color: blue;

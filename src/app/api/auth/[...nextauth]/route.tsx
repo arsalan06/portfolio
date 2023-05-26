@@ -1,5 +1,5 @@
 import { NextApiRequest } from "next";
-import UserModel from "@/app/models/UserModel";
+import {UserModel} from "@/app/models/UserModel";
 import { connect } from "@/util/mongoos";
 import { NextResponse } from "next/server";
 const jwt = require("jsonwebtoken");
