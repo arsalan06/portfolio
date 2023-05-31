@@ -1,26 +1,28 @@
-import { NextApiRequest } from "next";
+
 import {UserModel, projectModal} from "@/app/models/UserModel";
 import {connect} from "@/util/mongoos";
 import { NextResponse } from "next/server";
 import { data } from "autoprefixer";
+import { NextApiRequest } from "next";
 export async function GET(req: NextApiRequest) {
     try {
-        // console.log("i am in get request");
-        // const body = await request.json();
+       const url = new URL(`${req.url}`)
+       const name = url.searchParams.get("name")
         await connect();
         
-       const user = await UserModel.find();
-
+       const user = await UserModel.findOne({name:name});
+        delete user.password
         return NextResponse.json({
-            message:"signup  successfully!",
+            message:"User  successfully!",
             data:user
         }, {
             status: 200
         })
 
     }catch (e) {
+        console.log(e)
         return NextResponse.json(
-            { message: "Server error, please try again!" },
+            { message: e },
             { status: 500 }
         )
     }
